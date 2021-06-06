@@ -8,8 +8,12 @@
 import Foundation
 
 
+protocol MovieDetailCellView {
+    func displayInfo(info: String)
+}
+
 protocol MovieDetailView: class {
-    func setMoviewDetails()
+    func setMoviePoster(posterPath: String)
 }
 
 class DetailViewModel {
@@ -18,10 +22,26 @@ class DetailViewModel {
     
     private weak var view: MovieDetailView?
     
+    func setView(view: MovieDetailView) {
+        self.view = view
+    }
+    
+    init(selectedMovie: Movie) {
+        self.selectedMovie = selectedMovie
+    }
+    
     func getPopularityValue () -> String {
         var txt = ""
         if let popularity = selectedMovie?.popularity {
             txt = "Popularidad:" + " \(popularity)"
+        }
+        return txt
+    }
+    
+    func getFullPosterPathUrl() -> String {
+        var txt = ""
+        if let posterImage = selectedMovie?.backDropPath {
+            txt = SharedInfo.baseUrlForImage + posterImage
         }
         return txt
     }
@@ -47,25 +67,27 @@ class DetailViewModel {
         return "Fecha de estreno:" + " \(formattedFinalDate)"
     }
     
-//    func getFullBackdropPathUrl() -> String {
-//        var txt = ""
-//        if let backdrop = selectedMovie?.backDropPath {
-//            txt = SharedInfo.baseUrlForImage + backdrop
-//        }
-//        return txt
-//    }
-//
-//    func getFullPosterPathUrl(at indexPath: IndexPath) -> String {
-//        var txt = ""
-//        txt = SharedInfo.baseUrlForImage + movies[indexPath.row].posterPath
-//        return txt
-//    }
-    
     func getSpokenLanguage() -> String {
         var txt = ""
         if let lang = selectedMovie?.originalLanguage {
             let name = languageName(countryCode: lang)
             txt = "Idioma original:" + " \(name)"
+        }
+        return txt
+    }
+    
+    func getMovieDescription() -> String {
+        var txt = ""
+        if let description = selectedMovie?.overview {
+            txt = "Sinopsis:" + " \(description)"
+        }
+        return txt
+    }
+    
+    func getMovieTitle() -> String {
+        var txt = ""
+        if let title = selectedMovie?.title {
+            txt = title
         }
         return txt
     }
@@ -83,28 +105,26 @@ class DetailViewModel {
         }
         return txt
     }
-    
-    func getMovieDescription() -> String {
-        var txt = ""
-        if let sinposis = selectedMovie?.overview {
-            txt = sinposis
-        }
-        return txt
-    }
-            
+                
     func populateTableViewDetail() -> [String] {
         
         var values: [String] = [String]()
         
         values = [
-            getPopularityValue(),
+            getMovieDescription(),
+            getVoteAverage(),
             getSpokenLanguage(),
             getReleaseDate(),
-            getVoteAverage(),
+            getPopularityValue(),
             getGenres()
         ]
         
         return values
+    }
+    
+    func configure(cell: MovieDetailCellView, for index: Int) {
+        let info = populateTableViewDetail()[index]
+        cell.displayInfo(info: info)
     }
     
     func formattedDate(date: String) -> Date? {
@@ -126,6 +146,10 @@ class DetailViewModel {
             let name = NSLocale.current.localizedString(forRegionCode: code)
             return name == countryName
         }
+    }
+    
+    func setPoster() {
+        view?.setMoviePoster(posterPath: self.getFullPosterPathUrl())
     }
     
     func languageName(countryCode: String) -> String {

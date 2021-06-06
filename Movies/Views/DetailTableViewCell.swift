@@ -8,11 +8,15 @@
 import UIKit
 import Foundation
 
-class DetailTableViewCell: UITableViewCell {
-    
+class DetailTableViewCell: UITableViewCell, MovieDetailCellView {
+
     @IBOutlet weak var infoLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    func displayInfo(info: String) {
+        infoLabel.text = info
     }
 }

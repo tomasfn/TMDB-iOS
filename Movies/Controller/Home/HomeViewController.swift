@@ -7,7 +7,6 @@
 
 import UIKit
 import Foundation
-import Kingfisher
 
 class HomeViewController: UIViewController {
     
@@ -23,6 +22,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Movies"
+        
         initViewModel()
         setUpCollectionView()
         setUpSearchController()
@@ -34,7 +35,8 @@ class HomeViewController: UIViewController {
               self?.collectionView.reloadData()
            }
         }
-        viewModel.fetchData(name: "query")
+        
+        viewModel.setView(view: self)
     }
 }
 

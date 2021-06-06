@@ -22,4 +22,8 @@ extension HomeViewController: UISearchControllerDelegate, UISearchResultsUpdatin
         print(text)
         viewModel.fetchData(name: text)
     }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touches cancel")
+    }
 }

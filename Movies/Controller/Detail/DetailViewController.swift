@@ -11,16 +11,26 @@ import Foundation
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var backDropImage: ChachedImageView!
-    @IBOutlet weak var overViewDescriptionLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    var viewModel = MovieViewModel()
+    var viewModel: DetailViewModel!
+    
+    static func `init`(with viewModel: DetailViewModel) -> DetailViewController {
+        let vc = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: DetailViewController.nameOfClass)
+                as! DetailViewController
+        vc.viewModel = viewModel
+        return vc
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "\(String(describing: viewModel.selectedMovie?.title))"
+        title = "\(String(describing: viewModel.selectedMovie!.title))"
         setUpTable()
+        
+        viewModel.setView(view: self)
+        viewModel.setPoster()
     }
 }
 

@@ -9,6 +9,11 @@ import Foundation
 
 
 extension HomeViewController: MovieView {
+        
+    func showMovieDetails(viewModel: DetailViewModel) {
+        let vc = DetailViewController.`init`(with: viewModel)
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     func startLoading() {
         indicator.startAnimating()
@@ -19,11 +24,7 @@ extension HomeViewController: MovieView {
         indicator.stopAnimating()
         indicator.isHidden = true
     }
-    
-    func setMovies(movies: [Movie]) {
-        collectionView.reloadData()
-    }
-    
+
     func setEmpty() {
 
     }

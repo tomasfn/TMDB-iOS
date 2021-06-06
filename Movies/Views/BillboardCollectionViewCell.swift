@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Kingfisher
+import SDWebImage
 
 class BillboardCollectionViewCell: UICollectionViewCell, MovieCellView {
     
@@ -22,7 +22,7 @@ class BillboardCollectionViewCell: UICollectionViewCell, MovieCellView {
     func displayMovie(title: String, description: String, averageVote: String, posterImgUrl: String) {
         titleMovie.text = title
         movieDescription.text = description
-        movieaverageVote.text = averageVote
-        posterMovieImage.dowloadFromServer(url: URL(string: posterImgUrl)!)
+        movieaverageVote.text = "Media de voto: \(averageVote)"
+        posterMovieImage.sd_setImage(with: URL(string: SharedInfo.baseUrlForImage + posterImgUrl), placeholderImage: UIImage(named: "placeholder"))        
     }
 }

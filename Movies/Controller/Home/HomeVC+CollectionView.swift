@@ -30,18 +30,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BillboardCollectionViewCell.nameOfClass, for: indexPath) as! BillboardCollectionViewCell
        
         viewModel.configure(cell: cell, for: indexPath.row)
-
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        viewModel.selectedMovie = viewModel.getDataMovieFromIndexPath(at: indexPath)
-        
-        let detailVc = NavigationHelper.detailViewController()
-        detailVc.viewModel = viewModel
-        detailVc.modalPresentationStyle = .formSheet
-        present(detailVc, animated: true, completion: nil)
+        viewModel.showDetails(index: indexPath.row)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

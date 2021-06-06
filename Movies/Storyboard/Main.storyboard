@@ -82,26 +82,16 @@
                                         </constraints>
                                     </imageView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bez-jG-E6O">
-                                        <rect key="frame" x="0.0" y="375.5" width="414" height="520.5"/>
+                                        <rect key="frame" x="0.0" y="275" width="414" height="621"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIh-1X-PW9">
-                                        <rect key="frame" x="8" y="286" width="398" height="81.5"/>
-                                        <string key="text">Following the events of “Avengers: Endgame”, the Falcon, Sam Wilson and the Winter Soldier, Bucky Barnes team up in a global adventure that tests their abilities, and their patience</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="jIh-1X-PW9" firstAttribute="leading" secondItem="V2E-an-AWL" secondAttribute="leading" constant="8" id="Bs7-yx-MXQ"/>
                                     <constraint firstAttribute="bottom" secondItem="1nU-9m-ciM" secondAttribute="bottom" constant="618" id="L8b-2E-WCi"/>
+                                    <constraint firstItem="Bez-jG-E6O" firstAttribute="top" secondItem="1nU-9m-ciM" secondAttribute="bottom" constant="-3" id="Lz7-KS-25D"/>
                                     <constraint firstItem="1nU-9m-ciM" firstAttribute="centerX" secondItem="sUF-4h-tgf" secondAttribute="centerX" id="O1g-0Z-c18"/>
                                     <constraint firstItem="1nU-9m-ciM" firstAttribute="top" secondItem="sUF-4h-tgf" secondAttribute="top" constant="1" id="RrS-us-kZ1"/>
-                                    <constraint firstItem="V2E-an-AWL" firstAttribute="trailing" secondItem="jIh-1X-PW9" secondAttribute="trailing" constant="8" id="Se3-2C-S6B"/>
-                                    <constraint firstItem="jIh-1X-PW9" firstAttribute="top" secondItem="1nU-9m-ciM" secondAttribute="bottom" constant="8" symbolic="YES" id="Wqw-mZ-Aov"/>
                                     <constraint firstAttribute="trailing" secondItem="1nU-9m-ciM" secondAttribute="trailing" id="bLl-if-JHV"/>
-                                    <constraint firstItem="Bez-jG-E6O" firstAttribute="top" secondItem="jIh-1X-PW9" secondAttribute="bottom" constant="8" symbolic="YES" id="fqy-0j-78j"/>
                                     <constraint firstItem="1nU-9m-ciM" firstAttribute="leading" secondItem="Bez-jG-E6O" secondAttribute="leading" id="glW-7h-h3n"/>
                                     <constraint firstItem="1nU-9m-ciM" firstAttribute="leading" secondItem="sUF-4h-tgf" secondAttribute="leading" id="se3-BL-5Er"/>
                                     <constraint firstItem="Bez-jG-E6O" firstAttribute="centerX" secondItem="sUF-4h-tgf" secondAttribute="centerX" id="uft-vt-452"/>
@@ -125,13 +115,12 @@
                     <navigationItem key="navigationItem" id="bCD-lI-TJZ"/>
                     <connections>
                         <outlet property="backDropImage" destination="1nU-9m-ciM" id="bTo-1y-rPv"/>
-                        <outlet property="overViewDescriptionLbl" destination="jIh-1X-PW9" id="7FA-lr-qf4"/>
                         <outlet property="tableView" destination="Bez-jG-E6O" id="TOC-qd-wOc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ms-ly-Pl3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1832" y="-58"/>
+            <point key="canvasLocation" x="1831.8840579710147" y="-58.258928571428569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="i7T-9g-Daw">

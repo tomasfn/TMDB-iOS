@@ -46,4 +46,6 @@ extension Movie {
 struct Result: Codable {
     let results: [Movie]
     let page: Int
+    let total_pages: Int
+    let total_results: Int
 }

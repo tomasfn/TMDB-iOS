@@ -23,32 +23,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9234EE06-47DF-4306-A81A-502902BA6A03"
+            uuid = "750BA2BC-71EE-4879-AABF-80C2071C452E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Movies/Network Manager/NetworkService.swift"
+            filePath = "Movies/Controller/Home/HomeVC+CollectionView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "searchMovie(name:page:completion:)"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "scrollViewDidScroll(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "92C4767E-1AC4-40E3-93A4-A400F9CDFF86"
+            uuid = "831301AB-E106-4C50-A928-30177807BAFD"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Movies/Network Manager/NetworkService.swift"
+            filePath = "Movies/Controller/Home/HomeVC+CollectionView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "searchMovie(name:page:completion:)"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "scrollViewDidScroll(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1D0F207C-2E6F-42B9-8B22-C2134B510804"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Movies/ViewModels/DetailViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "setPoster()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -6,13 +6,12 @@
 //
 
 import Foundation
+import SDWebImage
+
 
 extension DetailViewController: MovieDetailView {
     
-    func setMoviewDetails() {
-        overViewDescriptionLbl.text = viewModel.getMovieDescription()
+    func setMoviePoster(posterPath: String) {
+        backDropImage.sd_setImage(with: URL(string: posterPath), placeholderImage: UIImage(named: "placeholder"))
     }
-    
 }
-
-

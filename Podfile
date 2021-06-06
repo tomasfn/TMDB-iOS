@@ -2,7 +2,7 @@
 # platform :ios, '9.0'
 
 def movies_pods 
-  pod 'Kingfisher'
+  pod 'SDWebImage'
   pod 'Moya'
 end
 

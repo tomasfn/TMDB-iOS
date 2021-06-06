@@ -10,14 +10,14 @@ import Moya
 
 
 protocol APIServiceProtocol: AnyObject {
-    func searchMovie(name: String, page: String, completion: @escaping ([Movie]?, Error?)->Void)
+    func searchMovie(name: String, page: String, completion: @escaping ([Movie]?, Int?, Error?)->Void)
 }
 
 class NetworkService: APIServiceProtocol {
     
     let baseProvider = MoyaProvider<BaseService>()
 
-    func searchMovie(name: String, page: String, completion: @escaping ([Movie]?, Error?) -> Void) {
+    func searchMovie(name: String, page: String, completion: @escaping ([Movie]?, Int?, Error?) -> Void) {
         
         baseProvider.request(.searchMovie(name: name)) { (result) in
             switch result {
@@ -28,17 +28,17 @@ class NetworkService: APIServiceProtocol {
                     decoder.keyDecodingStrategy = .useDefaultKeys
                     let result = try decoder.decode(Result.self, from: response.data)
                     let movies = result.results
-                    completion(movies, nil)
+                    completion(movies, result.total_pages, nil)
                     
                 } catch let error {
                     // Status code error or Mapping Error
                     print(error)
-                    completion(nil, error)
+                    completion(nil, nil, error)
                 }
      
             case let .failure(error):
                 print(error.localizedDescription)
-                completion(nil, error)
+                completion(nil, nil, error)
             }
         }
     }

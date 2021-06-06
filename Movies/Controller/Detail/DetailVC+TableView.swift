@@ -22,7 +22,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.nameOfClass, for: indexPath) as! DetailTableViewCell
         
-        cell.infoLabel.text = viewModel.populateTableViewDetail()[indexPath.row]
+        viewModel.configure(cell: cell, for: indexPath.row)
+        
         return cell
     }
 }
