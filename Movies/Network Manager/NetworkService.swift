@@ -19,7 +19,7 @@ class NetworkService: APIServiceProtocol {
 
     func searchMovie(name: String, page: String, completion: @escaping ([Movie]?, Int?, Error?) -> Void) {
         
-        baseProvider.request(.searchMovie(name: name)) { (result) in
+        baseProvider.request(.searchMovie(name: name, page: page)) { (result) in
             switch result {
             case let .success(response):
                             

@@ -22,7 +22,18 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-           return CGSize(width: 180, height: 180)
+        let numberOfItemsPerRow:CGFloat = 1
+        let spacingBetweenCells:CGFloat = 2
+            
+        let totalSpacing = (2 * CGFloat(self.spacing)) + ((numberOfItemsPerRow - 1) * spacingBetweenCells) //Amount of total spacing in a row
+            
+        if let collection = self.collectionView{
+            let width = (collection.bounds.width - totalSpacing)/numberOfItemsPerRow
+            return CGSize(width: width, height: width)
+            
+        }else{
+            return CGSize(width: 0, height: 0)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -36,6 +47,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.showDetails(index: indexPath.row)
     }
+
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (((collectionView.contentOffset.y + collectionView.frame.size.height) > collectionView.contentSize.height ) && !viewModel.isLoading){

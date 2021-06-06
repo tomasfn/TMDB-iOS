@@ -68,7 +68,13 @@ class MovieViewModel {
             } else {
                 guard let movies = movies else { return }
                 guard let totalPages = totalPages else { return }
-                self.movies = movies
+                
+                if self.currentPage > 1 {
+                    self.movies.append(contentsOf: movies)
+                } else {
+                    self.movies = movies
+                }
+                
                 self.totalPages = totalPages
                 self.isLoading = false
                 self.view?.finishLoading()

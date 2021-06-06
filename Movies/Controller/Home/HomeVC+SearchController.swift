@@ -20,6 +20,10 @@ extension HomeViewController: UISearchControllerDelegate, UISearchResultsUpdatin
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
         print(text)
+        
+        viewModel.movies.removeAll()
+        viewModel.currentPage = 1
+        
         viewModel.fetchData(name: text)
     }
     

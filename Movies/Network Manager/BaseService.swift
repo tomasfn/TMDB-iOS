@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum BaseService {
-    case searchMovie(name: String)
+    case searchMovie(name: String, page: String)
 }
 
 extension BaseService: TargetType {
@@ -36,8 +36,8 @@ extension BaseService: TargetType {
     
     var task: Task {
         switch self {
-        case .searchMovie(let name):
-            return .requestParameters(parameters: [ "api_key": SharedInfo.apiKey, "query": name], encoding: URLEncoding.queryString)
+        case .searchMovie(let name, let page):
+            return .requestParameters(parameters: [ "api_key": SharedInfo.apiKey, "query": name, "page": page], encoding: URLEncoding.queryString)
         }
     }
     

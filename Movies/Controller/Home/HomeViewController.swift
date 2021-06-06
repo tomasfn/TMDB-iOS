@@ -14,7 +14,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     let search = UISearchController(searchResultsController: nil)
-            
+    
+    let spacing: Float = 16.0
+
     lazy var viewModel: MovieViewModel = {
           return MovieViewModel()
     }()
