@@ -91,15 +91,7 @@ class DetailViewModel {
         }
         return txt
     }
-        
-    func getCountriesOrigin() -> String {
-        var txt = ""
-        if let countries = selectedMovie?.originCountries {
-            txt = "Paises:" + " \(countries.joined(separator: ", "))"
-        }
-        return txt
-    }
-    
+            
     func populateTableViewDetail() -> [String] {
         
         var values: [String] = [String]()
@@ -108,7 +100,6 @@ class DetailViewModel {
             getPopularityValue(),
             getSpokenLanguage(),
             getReleaseDate(),
-            getCountriesOrigin(),
             getVoteAverage(),
             getGenres()
         ]

@@ -9,14 +9,13 @@ import Foundation
 
 struct Movie: Codable {
     let adult: Bool
-    let posterPath: String
+    let posterPath: String?
     let popularity: Double
     let id: Int
-    let backDropPath: String
+    let backDropPath: String?
     let voteAverage: Double
     let overview: String
     let releaseDate: String
-    let originCountries: [String]
     let genresIds: [Int]
     let originalLanguage: String
     let voteCount: Int
@@ -35,7 +34,6 @@ extension Movie {
         case voteAverage = "vote_average"
         case overview
         case releaseDate = "release_date"
-        case originCountries = "origin_country"
         case genresIds = "genre_ids"
         case originalLanguage = "original_language"
         case voteCount = "vote_count"

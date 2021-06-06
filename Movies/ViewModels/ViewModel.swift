@@ -149,18 +149,10 @@ class MovieViewModel {
         }
         return txt
     }
-    
-    func getCountriesOrigin() -> String {
-        var txt = ""
-        if let countries = selectedMovie?.originCountries {
-            txt = "Paises:" + " \(countries.joined(separator: ", "))"
-        }
-        return txt
-    }
-    
+        
     func configure(cell: MovieCellView, for index: Int) {
         let movie = movies[index]
-        cell.displayMovie(title: movie.title, description: movie.overview, averageVote: String(movie.voteAverage), posterImgUrl: movie.posterPath)
+        cell.displayMovie(title: movie.title, description: movie.overview, averageVote: String(movie.voteAverage), posterImgUrl: movie.posterPath ?? "https://i.blogs.es/594843/chrome/450_1000.jpg")
     }
     
     func getMoviesCount() -> Int {
@@ -175,7 +167,6 @@ class MovieViewModel {
             getPopularityValue(),
             getSpokenLanguage(),
             getReleaseDate(),
-            getCountriesOrigin(),
             getVoteAverage(),
             getGenres()
         ]
