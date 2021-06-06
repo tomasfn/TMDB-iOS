@@ -9,10 +9,12 @@ import UIKit
 import Foundation
 import Kingfisher
 
-class HomeViewController: UISearchController {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    
+    let search = UISearchController(searchResultsController: nil)
             
     lazy var viewModel: MovieViewModel = {
           return MovieViewModel()
@@ -20,8 +22,10 @@ class HomeViewController: UISearchController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         initViewModel()
         setUpCollectionView()
+        setUpSearchController()
     }
     
     func initViewModel() {
@@ -32,7 +36,6 @@ class HomeViewController: UISearchController {
         }
         viewModel.fetchData(name: "query")
     }
-    
 }
 
 

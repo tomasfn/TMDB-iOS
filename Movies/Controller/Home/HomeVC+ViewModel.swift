@@ -7,7 +7,8 @@
 
 import Foundation
 
-extension HomeViewController: MoviewView {
+
+extension HomeViewController: MovieView {
     
     func startLoading() {
         indicator.startAnimating()
@@ -25,6 +26,10 @@ extension HomeViewController: MoviewView {
     
     func setEmpty() {
 
+    }
+    
+    func showError(error: String) {
+        print(error)
     }
     
 }

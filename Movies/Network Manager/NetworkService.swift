@@ -6,62 +6,40 @@
 //
 
 import Foundation
+import Moya
 
-typealias gettingMoviesBlock = ([Movie]?, Error?) -> Void
-typealias moviesBlock = ([Movie]?) -> Void
 
 protocol APIServiceProtocol: AnyObject {
-    func getMovies(page: String, language: String, complete: @escaping ( _ success: Bool, _ movies: [Movie]?, _ error: Error? )->() )
+    func searchMovie(name: String, page: String, completion: @escaping ([Movie]?, Error?)->Void)
 }
 
-class NetworkServices: APIServiceProtocol {
+class NetworkService: APIServiceProtocol {
+    
+    let baseProvider = MoyaProvider<BaseService>()
 
-    func getMovies(page: String, language: String, complete: @escaping (Bool, [Movie]?, Error?) -> ()) {
+    func searchMovie(name: String, page: String, completion: @escaping ([Movie]?, Error?) -> Void) {
         
-        let headers: [String: String] = [
-            "Content-Type":"application/json",
-            "Accept":"application/json"
-        ]
-        
-        let parameters: [String: String] = [
-            "api_key" : SharedInfo.apiKey,
-            "page" : page,
-            "language" : language
-        ]
-        
-        var urlComp = URLComponents(string: SharedInfo.baseUrl + SharedInfo.popular)
-        
-        var queryItems = [URLQueryItem]()
-        for (key, value) in parameters {
-            queryItems.append(URLQueryItem(name: key, value: value))
+        baseProvider.request(.searchMovie(name: name)) { (result) in
+            switch result {
+            case let .success(response):
+                            
+                do {
+                     let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .useDefaultKeys
+                    let result = try decoder.decode(Result.self, from: response.data)
+                    let movies = result.results
+                    completion(movies, nil)
+                    
+                } catch let error {
+                    // Status code error or Mapping Error
+                    print(error)
+                    completion(nil, error)
+                }
+     
+            case let .failure(error):
+                print(error.localizedDescription)
+                completion(nil, error)
+            }
         }
-
-        urlComp?.queryItems = queryItems
-                
-        let session = URLSession.shared
-        var request = URLRequest(url: (urlComp?.url!)!)
-        request.httpMethod = "GET"
-        request.allHTTPHeaderFields = headers
-                
-        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
-            guard error == nil else {
-                complete(true, nil, error)
-                return
-            }
-            guard let data = data else {
-                return
-            }
-            do {
-                 let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .useDefaultKeys
-                let response = try decoder.decode(Result.self, from: data)
-                let movies = response.results
-                complete(true, movies, nil )
-            } catch {
-                print(error)
-                complete(true, nil, error )
-            }
-        })
-        task.resume()
     }
 }
