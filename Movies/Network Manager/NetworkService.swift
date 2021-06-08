@@ -8,7 +8,6 @@
 import Foundation
 import Moya
 
-
 protocol APIServiceProtocol: AnyObject {
     func searchMovie(name: String, page: String, completion: @escaping ([Movie]?, Int?, Error?)->Void)
 }

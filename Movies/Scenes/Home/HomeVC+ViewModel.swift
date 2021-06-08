@@ -24,10 +24,6 @@ extension HomeViewController: MovieView {
         indicator.stopAnimating()
         indicator.isHidden = true
     }
-
-    func setEmpty() {
-
-    }
     
     func showError(error: String) {
         print(error)

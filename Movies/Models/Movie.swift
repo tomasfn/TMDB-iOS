@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Movie: Codable {
+struct Movie: Codable, Equatable {
     let adult: Bool
     let posterPath: String?
     let popularity: Double
@@ -40,6 +40,10 @@ extension Movie {
         case video
         case title
         case originalTitle = "original_title"
+    }
+    
+    static func ==(lhs: Movie, rhs: Movie) -> Bool {
+        return lhs.adult == rhs.adult && lhs.posterPath == rhs.posterPath && lhs.popularity == rhs.popularity && lhs.id == rhs.id && lhs.backDropPath == rhs.backDropPath && lhs.voteAverage == rhs.voteAverage && lhs.overview == rhs.overview && lhs.releaseDate == rhs.releaseDate && lhs.genresIds == rhs.genresIds && lhs.originalLanguage == rhs.originalLanguage && lhs.voteCount == rhs.voteCount && lhs.video == rhs.video && lhs.title == rhs.title && lhs.originalTitle == rhs.originalTitle
     }
 }
 

@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 extension HomeViewController: UISearchControllerDelegate, UISearchResultsUpdating {
     
     func setUpSearchController() {

@@ -16,7 +16,6 @@ protocol MovieView: class {
     func startLoading()
     func finishLoading()
     func showMovieDetails(viewModel: DetailViewModel)
-    func setEmpty()
     func showError(error: String)
 }
 

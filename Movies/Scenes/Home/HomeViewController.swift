@@ -32,13 +32,12 @@ class HomeViewController: UIViewController {
     }
     
     func initViewModel() {
+        viewModel.setView(view: self)
         viewModel.reloadTableViewClosure = { [weak self] () in
            DispatchQueue.main.async {
               self?.collectionView.reloadData()
            }
         }
-        
-        viewModel.setView(view: self)
     }
 }
 
