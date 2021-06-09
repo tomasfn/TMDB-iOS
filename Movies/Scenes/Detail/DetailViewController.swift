@@ -16,9 +16,7 @@ class DetailViewController: UIViewController {
     var viewModel: DetailViewModel!
     
     static func `init`(with viewModel: DetailViewModel) -> DetailViewController {
-        let vc = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(withIdentifier: DetailViewController.nameOfClass)
-                as! DetailViewController
+        let vc = NavigationHelper.detailViewController()
         vc.viewModel = viewModel
         return vc
     }
